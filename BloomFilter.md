@@ -13,13 +13,11 @@ Bloom Filter Report
 	For testing these functions, I set the number of hash functions, k, to be 5, and let the hash table size be 100,000. I began by looping through 1000 values of x, and each function is ran k times per x value, so I received 5000 mapped values. For each function, I also ran two different types of data. On each function, I looped through values 0-1000, and also randomized values up to m. My goal was to determine if randomized 
 
 values or consecutive values create different results.
-
+[first screenshot](images/screenshot2.png)
 Both of these graphs look nearly identical to one another, so I concluded that data choice did not matter for either function 1 and 2, and each function produced values that hit uniformly all over the plot. I also ran another test to determine if one function produces more collisions than the other 
 
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image1.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
-
-![alt_text](images/image1.png "image_tooltip")
+[first screenshot](images/screenshot2.png)
  function. I added a counter to each loop that incremented whenever a mapped value already existed. I repeated this with both types of data for each function 10 times and concluded that they all have similar median values besides the randomized values for hash function 2. The randomized values for hash function 2 produced a median of 2177 (with k=5 and c=10), and the other 3 types had medians of 120, 111, and 121. I repeated this experiment with both smaller k values and larger k values, and learned that as the k value increases, so does the number of collisions, and that changing the c value did not affect the collision numbers. I also noted that the range of both types of data in function 2 varied significantly more than in hash function 1. The ranges for function 1 were 38 and 33, whereas function 2 had ranges of 945 and 592, indicating a much higher appearance of outliers.
 
 	Overall, both hash functions behave efficiently and produce similar results to one another, however if using random data, it may be better to implement hash function 1 rather than hash function 2.
@@ -29,14 +27,12 @@ Both of these graphs look nearly identical to one another, so I concluded that d
 	Once the bloom filter was implemented, I was able to begin part 3 of this project and analyze the false positive rates. I determined the false positive rate by inserting values from 0 to n into the bloom filter, then doing 10000 queries on random numbers that are outside of this range. Since I know that all 10000 values should not be in the bloom filter, I kept count of each true I received and divided by 10000 to find the rate. My first collection of data was done by fixing c=10 and changing the k value. I did this 10 times for each k value for function 1 and found the median, and I did this 30 times for each k value for function 2. I had to collect much more data for function 2 because of the wide range I described earlier in part 1 of this report. Only taking 10 values caused my data to be more random and unpredictable for function 2, so I had to increase that to see the larger trend.
 
 
-
-<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image2.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image2.png "image_tooltip")
+[first screenshot](images/screenshot3.png)
 	
 
 I was able to plot the theoretical values by plugging in each k and c into the theoretical function derived in lecture. I got the theoretical optimal k value from using k = cln2 as derived from lecture also. This data shows that function 1 follows the theoretical function pretty closely, whereas the second hash function has more optimal results. Hash function 2 has a similar shape to the theoretical function (maybe an outlier at/after k=10), yet its false positive rates are significantly lower. For both functions, the theoretical k value was close to what would be expected.
+
+[first screenshot](images/screenshot4.png)
 
 	I also plotted each function when c=15 to see if anything changes.
 
