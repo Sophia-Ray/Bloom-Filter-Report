@@ -10,17 +10,13 @@ Bloom Filter Report
 
 	The first part of this project was to create two different types of hash functions. The first function I implemented, called hashFunc1, fixed k seeds at the start of the program, and then used a random number generated from that. The second hash function I created, called hashFunc2, used a uniform random a and b, as well as prime p and the size of the hash table m to generate a mapped value. 
 
-	For testing these functions, I set the number of hash functions, k, to be 5, and let the hash table size be 100,000. I began by looping through 1000 values of x, and each function is ran k times per x value, so I received 5000 mapped values. For each function, I also ran two different types of data. On each function, I looped through values 0-1000, and also randomized values up to m. My goal was to determine if randomized 
-
-values or consecutive values create different results.
-[first screenshot](images/screenshot1.png)
-Both of these graphs look nearly identical to one another, so I concluded that data choice did not matter for either function 1 and 2, and each function produced values that hit uniformly all over the plot. I also ran another test to determine if one function produces more collisions than the other 
-
-
-[second screenshot](images/screenshot2.png)
+	For testing these functions, I set the number of hash functions, k, to be 5, and let the hash table size be 100,000. I began by looping through 1000 values of x, and each function is ran k times per x value, so I received 5000 mapped values. For each function, I also ran two different types of data. On each function, I looped through values 0-1000, and also randomized values up to m. My goal was to determine if randomized values or consecutive values create different results. [first screenshot](images/screenshot1.png) Both of these graphs look nearly identical to one another, so I concluded that data choice did not matter for either function 1 and 2, and each function produced values that hit uniformly all over the plot. I also ran another test to determine if one function produces more collisions than the other
+ 
+ [second screenshot](images/screenshot2.png) 
+ 
  function. I added a counter to each loop that incremented whenever a mapped value already existed. I repeated this with both types of data for each function 10 times and concluded that they all have similar median values besides the randomized values for hash function 2. The randomized values for hash function 2 produced a median of 2177 (with k=5 and c=10), and the other 3 types had medians of 120, 111, and 121. I repeated this experiment with both smaller k values and larger k values, and learned that as the k value increases, so does the number of collisions, and that changing the c value did not affect the collision numbers. I also noted that the range of both types of data in function 2 varied significantly more than in hash function 1. The ranges for function 1 were 38 and 33, whereas function 2 had ranges of 945 and 592, indicating a much higher appearance of outliers.
 
-	Overall, both hash functions behave efficiently and produce similar results to one another, however if using random data, it may be better to implement hash function 1 rather than hash function 2.
+
 
 	Part 2 of this report is to implement the actual bloom filter. It was extremely simple to implement and very efficient. I used the bitset data structure as my container for the bloom filter because I am able to fix the size of the array at the beginning since I know m. I created one insert function and one query function for each type of hash function, and I just followed the lecture code for designing it.
 
